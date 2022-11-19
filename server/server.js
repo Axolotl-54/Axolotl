@@ -2,7 +2,10 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
+<<<<<<< HEAD
+=======
 require('dotenv').config()
+>>>>>>> dev
 
 const MONGO_URI = process.env.MONGO_URI;
 const cardController = require('./controllers/cardController')
