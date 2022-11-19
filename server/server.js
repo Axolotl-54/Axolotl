@@ -1,10 +1,11 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const mongoose = require('mongoose');
 
 const MONGO_URI = process.env.MONGO_URI
 
-mongoose.connect(MONGO_URI, {
+mongoose.connect("mongodb+srv://axolotl:axolotl@cluster0.pupqxms.mongodb.net/test", {
     // options for the connect method to parse the URI
     useNewUrlParser: true,
     useUnifiedTopology: true,
