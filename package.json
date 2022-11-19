@@ -1,0 +1,53 @@
+{
+  "name": "main",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"cross-env NODE_ENV=development webpack-dev-server --mode development --open --hot\" \" nodemon server/server.js\"",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Axolotl-54/Main.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Axolotl-54/Main/issues"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6",
+    "babel-loader": "^9.1.0",
+    "concurrently": "^6.0.2",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.2",
+    "html-webpack-plugin": "^5.5.0",
+    "isomorphic-fetch": "^3.0.0",
+    "nodemon": "^2.0.7",
+    "sass": "^1.56.1",
+    "sass-loader": "^13.2.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.11.1"
+  },
+  "homepage": "https://github.com/Axolotl-54/Main#readme",
+  "dependencies": {
+    "concurrently": "^7.5.0",
+    "dotenv": "^16.0.3",
+    "es6-promise": "^4.2.8",
+    "express": "^4.18.2",
+    "isomorphic-fetch": "^3.0.0",
+    "mongoose": "^6.7.2",
+    "nodemon": "^2.0.20",
+    "pg": "^8.5.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.4.3"
+  }
+}
