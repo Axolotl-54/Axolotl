@@ -11,7 +11,7 @@ const cardSchema = new Schema ({
     cardAssigned: String,
     cardDescription: String,
     cardCategory: String,
-})
+});
 
 //if want users to be in DB, can create user schema below and export
 

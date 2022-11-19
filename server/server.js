@@ -1,8 +1,11 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const mongoose = require('mongoose');
+require('dotenv').config()
 
-const MONGO_URI = process.env.MONGO_URI
+const MONGO_URI = process.env.MONGO_URI;
+const cardController = require('./controllers/cardController')
 
 mongoose.connect(MONGO_URI, {
     // options for the connect method to parse the URI
@@ -17,6 +20,10 @@ mongoose.connect(MONGO_URI, {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
+
+app.post('/api/createCard', cardController.createCard, (req, res) => {
+    res.status(200).json(res.locals.newCard);
+});
 
 
 app.use((err, req, res, next) => {
