@@ -6,6 +6,7 @@ const Card = require('../models/cardsModel');
 const cardController = {
     //create card middleware
     async createCard(req, res, next) {
+        console.log('clicked create card');
         try {
             const { newCardName, newCardAssigned, newCardDescription, newCardCategory } = req.body //assuming they call it cardName
             const result = await Card.create( { cardName: newCardName, cardAssigned: newCardAssigned, cardDescription: newCardDescription, cardCategory: newCardCategory });
