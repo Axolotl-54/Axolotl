@@ -2,12 +2,19 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-//sam also says whatttupp
-//matts hi
-//Corey's hi
-//erics hi
+//okay to remove deleted comments saying hi
+
+//creating DB schema
+
+const cardSchema = new Schema ({
+    cardName: { type: String, required: true },
+    cardAssigned: String,
+    cardDescription: String,
+    cardCategory: String,
+})
+
+//if want users to be in DB, can create user schema below and export
 
 
-module.exports = {
-    
-}
+const Card = mongoose.model('card', cardSchema)
+module.exports = Card;
