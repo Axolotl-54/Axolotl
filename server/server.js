@@ -27,6 +27,9 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../index.html'));
 });
 
+app.get('/api/getCards', cardController.findCards, (req, res) => {
+    res.status(200).json(res.locals.allCards);
+});
 
 //serve static css file for original get request to / for index
 // app.get('/styles.css', (req, res) => {

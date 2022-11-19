@@ -21,7 +21,22 @@ const cardController = {
                 }
             })
         }
+    },
+    
+    async findCards(req, res, next) {
+        try{
+            const result = await Card.find({});//might need to change to no parameters to get all
+            res.locals.allCards = result;
+            console.log('returned', result)
+            return next()
+        } catch(err){
+            err.log = 'Expressor error in carController findCards';
+            err.status = 500;
+            err.message = {err: 'Expressor error in carController findCards'};
+            return next(err);
+        }
     }
+
 };
 
 
