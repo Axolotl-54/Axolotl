@@ -35,7 +35,32 @@ const cardController = {
             err.message = {err: 'Expressor error in carController findCards'};
             return next(err);
         }
+    },
+    
+
+    async updateCard (req, res, next) {
+        console.log('inside updateCard middleware');
+        try {
+            const { cardToUpdate, assignToUpdate, descriptionToUpdate, categoryToUpdate  } = req.body; //tell them cardToUpdate;
+            const result = await Card.findOneAndUpdate( { cardName : cardToUpdate }, { cardName : cardToUpdate, cardAssigned : assignToUpdate, cardDescription: descriptionToUpdate, cardCategory : categoryToUpdate }, {new: true});
+            res.locals.updatedCard = result;
+            console.log('updated card?', result)
+            return next();
+        } catch {
+            return next({
+                log: 'Express error in cardController.updateCard',
+                status: 500,
+                message: {
+                    err: 'An error occured inside the cardController.updateCard'
+                }
+            })
+        }
     }
+
+
+    // cardAssigned: String,
+    // cardDescription: String,
+    // cardCategory
 
 };
 

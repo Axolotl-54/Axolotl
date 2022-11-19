@@ -41,6 +41,11 @@ app.post('/api/createCard', cardController.createCard, (req, res) => {
     res.status(200).json(res.locals.newCard);
 });
 
+//all patch routes below
+app.patch('/api/updateCard', cardController.updateCard, (req, res) => {
+    res.status(200).json(res.locals.updatedCard);
+});
+
 
 app.use((err, req, res, next) => {
     const defErr = {
