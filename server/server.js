@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 require('dotenv').config()
 
 const MONGO_URI = process.env.MONGO_URI;
-const cardController = require('./controllers/cardController')
+const cardController = require('./controllers/cardController.js')
 
 mongoose.connect(MONGO_URI, {
     // options for the connect method to parse the URI
@@ -21,6 +21,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
 
+//all get routes below
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../index.html'));
+});
+
+
+//serve static css file for original get request to / for index
+// app.get('/styles.css', (req, res) => {
+//     res.sendFile(path.join(__dirname,'../client/styles.css'));
+// });
+
+// all post routes below
 app.post('/api/createCard', cardController.createCard, (req, res) => {
     res.status(200).json(res.locals.newCard);
 });
