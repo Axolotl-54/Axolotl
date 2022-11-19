@@ -14,6 +14,7 @@ const CardContainer = () => {
     await axios.post('http://localhost:8080/api/createCard', {
       newCardName: "corey"
     })
+    .then(res => console.log(res))
   }
   
   return (
