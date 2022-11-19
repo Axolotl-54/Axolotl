@@ -45,7 +45,6 @@
     "isomorphic-fetch": "^3.0.0",
     "mongoose": "^6.7.2",
     "nodemon": "^2.0.20",
-    "pg": "^8.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.3"
