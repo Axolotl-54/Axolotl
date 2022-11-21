@@ -6,7 +6,8 @@ const Card = require('../models/cardsModel');
 const cardController = {
     //create card middleware
     async createCard(req, res, next) {
-        console.log('clicked create card');
+        console.log('body', req.body)
+        console.log('clicked create card', req.body);
         try {
             const { newCardName, newCardAssigned, newCardDescription, newCardCategory } = req.body //assuming they call it cardName
             const result = await Card.create({ cardName: newCardName, cardAssigned: newCardAssigned, cardDescription: newCardDescription, cardCategory: newCardCategory });
@@ -28,7 +29,7 @@ const cardController = {
         try {
             const result = await Card.find({});//might need to change to no parameters to get all
             res.locals.allCards = result;
-            console.log('returned', result)
+            console.log('api called')
             return next()
         } catch (err) {
             err.log = 'Expressor error in carController findCards';
