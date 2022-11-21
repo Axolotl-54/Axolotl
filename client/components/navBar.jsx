@@ -9,13 +9,13 @@ const NavBar = () => {
     <Flex 
     px='15px'
     alignItems='center' 
-    justifyContent='space-between' 
+    justifyContent='space-evenly' 
     h='50px' 
     w='100%' 
     position='top' 
     bg='#00766C' 
     color='#ffdae8'
-    pos='fixed'>
+    pos='fixed-top'>
       {/* <Image src='https://cdn.dribbble.com/users/113499/screenshots/5794063/axolotl.png?compress=1&resize=400x300' /> */}
       <Text>TROLLO</Text>
       <Text>ABOUT</Text>

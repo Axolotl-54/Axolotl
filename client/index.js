@@ -1,8 +1,9 @@
 import React from "react";
 import  ReactDOM  from "react-dom/client";
-import App from "/client/components/App.js";
+import App from "./App.jsx";
 import { Provider } from 'react-redux'
 import { configureStore, compose, applyMiddleware } from '@reduxjs/toolkit'
+//thunk is asynchronous redux
 import thunk from 'redux-thunk'
 
 import reducers from './reducers/index'
