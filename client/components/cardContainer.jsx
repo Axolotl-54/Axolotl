@@ -15,11 +15,12 @@ import {
 } from '@chakra-ui/react'
 
 import { getTasks } from '/client/actions/actions.js'
+
 //we're importing the form file
 import Form from './form.jsx';
-import axios from 'axios'
 
-import useUpdateEffect from '../utility/updatedUseEffect'
+
+
 
 
 const CardContainer = () => {
@@ -55,7 +56,7 @@ const CardContainer = () => {
           <PopoverContent>
             <PopoverCloseButton />
             <PopoverHeader> Create Task </PopoverHeader>
-            <PopoverBody> fill out form here 
+            <PopoverBody>
               <Form />
             </PopoverBody>
           </PopoverContent>
