@@ -1,16 +1,12 @@
-import * as types from './actionTypes.js'
-import axios from 'axios'
+import * as api from './fetches.js'
 
 
 
 export const getTasks = () => async(dispatch) => {
   try{
-    let action;
-    await axios.get('api/getCards')
-      .then(res => {
-        action = {type: types.GET_TASKS, payload: res.data}
-      })
-      dispatch(action);
+    const { data } = await api.fetchTasks();
+    console.log('this is our data: ', data);
+    dispatch({type: 'GET_TASKS', payload: data})
   } catch (error) {
     console.log({error: error.message})
   }

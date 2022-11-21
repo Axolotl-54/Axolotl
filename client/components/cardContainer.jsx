@@ -1,35 +1,69 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch } from 'react-redux';
-import CardComponent from './cardComponent';
+import React, { useEffect, useState, useRef } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import CardComponent from './cardComponent.jsx' ;
+import { Stack, VStack, StackDivider, Button, Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react';
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverAnchor,
+} from '@chakra-ui/react'
+
+import { getTasks } from '/client/actions/actions.js'
+//we're importing the form file
+import Form from './form.jsx';
+import axios from 'axios'
+
+import useUpdateEffect from '../utility/updatedUseEffect'
 
 
 const CardContainer = () => {
-  // const dispatch = useDispatch();
-  // const [taskData, setTaskData] = useState({
-  //   newCardName: '',
-  //   newCardAssigned: '', 
-  //   newCardDescription: '', 
-  //   newCardCategory: '' 
-  // })
+  // grabbing array of tasks from state, have to get state from the index.js file because it imports TaskReducer
+  const dispatch = useDispatch()
+  // dispatch(getTasks());
+  // const tasks = useSelector((state) => state.TaskReducer.taskContainer);
 
-  // useEffect(() => {
-  //   dispatchEvent(getTasks());
-  // }, [dispatch])
+  useEffect(() => {
+    // fetch get from db and send to redux store
+    dispatch(getTasks())
+  }, [dispatch])
 
-  // let myOutput;
-  // const testFetch = async () => {
-  //   await axios.get('http://localhost:8080/api/createCard')
-  //   .then(res => myOutput = res.data)
-  // }
-// *****Sara was here. I just looked at documentation*****
-  return (
-    <>
-      <CardComponent />
-      {/* <Button onClick={() => testPost()}>Trolling button</Button> */}
-    </>
-    
+  const tasks = useSelector((state) => state.TaskReducer.taskContainer);
+  console.log('these are our tasks: ', tasks);
+  
+  
+  return ( 
+      <Card bg='#fffff2' minW = '300px' p = '10px'>
+        <CardHeader> To Do List </CardHeader>
+        <VStack 
+        divider = {<StackDivider/>}
+        spacing = {2}
+        align= 'stretch'
+      >
+        {tasks.map((task) => (
+          <CardComponent key = {task._id} task = {task}/>
+        ))}
+        <Popover colorScheme = 'green'>
+          <PopoverTrigger>
+            <Button colorScheme = 'pink' variant = 'ghost'>Add Task</Button>
+          </PopoverTrigger>
+          <PopoverContent>
+            <PopoverCloseButton />
+            <PopoverHeader> Create Task </PopoverHeader>
+            <PopoverBody> fill out form here 
+              <Form />
+            </PopoverBody>
+          </PopoverContent>
+        </Popover>
 
-  )
+      </VStack>
+      </Card>
+    )
 }
 
 export default CardContainer;

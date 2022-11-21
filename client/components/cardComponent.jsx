@@ -1,19 +1,42 @@
 // we need a use selector to get the state. State would hold an array of each column
 // need to import react
-const React = require('react');
+import React from 'react';
 // we're importing the properties Stack, Card, and Container from Chakra-Ui
-import { Card, CardHeader, Text, CardBody, CardFooter, Stack, Divider} from '@chakra-ui/react'
+import { 
+  Card,
+  Box, 
+  CardHeader, 
+  Text, 
+  CardBody, 
+  CardFooter, 
+  Stack, 
+  Divider, 
+  Editable, 
+  Accordion, 
+  AccordionItem,
+  AccordionButton,
+  AccordionIcon,
+  AccordionPanel} from '@chakra-ui/react'
 
 
 //declaring our CardComponent variable
-const CardComponent = () => {
+const CardComponent = ({ task }) => {
   return (
-    <Card size = 'sm' variant = 'elevated' maxW = '300px' color = 'black'>
-      <Stack direction='row' h='50px' p={4}>
-        <Divider orientation='vertical' />
-        <Text>Chakra UI</Text>
+    <Card size = 'sm' variant = 'elevated' maxW = '300px' color = '#00766C'>
+      <Stack direction='row' minHeight='50px' p = {3} >
+        <Accordion allowToggle minWidth = '100%'>
+          <AccordionItem >
+            <AccordionButton>
+              <Box flex = '1' textAlign = 'left'> {task.cardName} </Box>
+            </AccordionButton>
+            <AccordionPanel pb = {4}>
+              {task.cardDescription}
+            </AccordionPanel>
+          </AccordionItem>
+        </Accordion>
       </Stack>
     </Card>
   )
 }
+
 export default CardComponent;
