@@ -1,8 +1,26 @@
 const React = require('react');
+import About from './about.jsx';
 // we're importing the properties Stack, Card, and Container from Chakra-Ui
-import { Image, Flex, Card, CardHeader, Text, CardBody, CardFooter, Stack, Divider} from '@chakra-ui/react'
+import { 
+  Button,
+  Image, 
+  Flex, 
+  Card, 
+  CardHeader, 
+  Text, 
+  CardBody, 
+  CardFooter, 
+  Stack, 
+  Divider, 
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,} from '@chakra-ui/react'
 
-const NavBar = () => {
+const NavBar = (isOpen, onOpen, onClose) => {
   return (
   <>
     <Flex
@@ -21,7 +39,10 @@ const NavBar = () => {
         h='80%'
       />
       <Text fontSize = {40}>TROLLO</Text>
+      {/* <Button onClick={onOpen}>ABOUT</Button>
+      <Modal isOpen={isOpen}> */}
       <Text fontSize = {30}>ABOUT</Text>
+      {/* <About /> */}
     </Flex>
   </>
   )

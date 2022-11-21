@@ -9,9 +9,17 @@ export default (state = myState, action) => {
   let newState;
   switch (action.type) {
     case 'GET_COLUMNS':
-      return state.columnContainer;
+      // newState = {
+      //   columnContainer: 
+      // }
+      // return newState
     case 'ADD_TASK':
-      state.taskContainer.push(action.payload);
+      newState = {
+        columnContainer: state.columnContainer,
+        taskContainer: state.taskContainer.push(action.payload),
+      }
+      return newState;
+      // return [...state.taskContainer, action.payload]
     case 'GET_TASKS':
       // assuming payload 
       newState = {
